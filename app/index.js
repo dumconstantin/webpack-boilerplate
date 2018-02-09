@@ -3,7 +3,7 @@
  */
 
 // Load application styles
-import 'styles/index.scss';
+import 'styles/index.css';
 
 // ================================
 // START YOUR APP HERE

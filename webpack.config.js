@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+process.env.TAILWIND_FLAVOUR = 'tachyons'
+
 // Is the current build a development build
 const IS_DEV = (process.env.NODE_ENV === 'dev');
 
@@ -55,23 +57,9 @@ module.exports = {
                 }
             },
 
-            // STYLES
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: IS_DEV
-                        }
-                    },
-                ]
-            },
-
             // CSS / SASS
             {
-                test: /\.scss/,
+                test: /\.css/,
                 use: [
                     'style-loader',
                     {
@@ -81,10 +69,12 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'sass-loader',
+                        loader: 'postcss-loader',
                         options: {
-                            sourceMap: IS_DEV,
-                            includePaths: [dirAssets]
+                          plugins: (loader) => ([
+                            require('postcss-import'),
+                            require('tailwindcss')(__dirname + '/tailwind.js'),
+                          ])
                         }
                     }
                 ]
