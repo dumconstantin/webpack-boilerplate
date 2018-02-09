@@ -1,4 +1,4 @@
-Webpack 3 Boilerplate
+Webpack 3 Boilerplate + Tailwind(Tachyons Flavour)
 ===========
 
 [![Dependency Status](https://david-dm.org/cvgellhorn/webpack-boilerplate.svg)](https://david-dm.org/cvgellhorn/webpack-boilerplate)
